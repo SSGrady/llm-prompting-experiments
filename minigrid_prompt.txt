@@ -1,0 +1,17 @@
+Generate exactly 4 distinct state sequences navigating from Start to Goal in a MiniGrid world. Follow these rules:
+
+1. Each sequence must:
+   - Begin with ['At(Start)']
+   - End with ['At(Goal)']
+   - Use only these predicates: At(?), PickedUp(?), Unlocked(?)
+   - Use only these objects: EasyKey, HardKey, Door, Lava, Wall
+
+2. Valid transitions must show:
+   - Key collection before door unlocking
+   - Avoid lava/wall states
+   - Logical progression (e.g., cannot unlock door without key)
+
+3. Format each sequence as a Python list with EXACTLY this structure:
+['At(Start)', 'PickedUp(EasyKey)', 'Unlocked(Door)', ..., 'At(Goal)']
+
+Output ONLY the 4 Python lists separated by newlines. No explanations.
