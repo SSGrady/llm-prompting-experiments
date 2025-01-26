@@ -1,11 +1,13 @@
 # LgTS Implementation
 
-Official implementation UCF's L15 for "Dynamic Task Sampling using LLM-generated sub-goals" (LgTS)
+UCF Team L15's LLM implementation for "Dynamic Task Sampling using LLM-generated sub-goals" (LgTS)
+
+![Img of prettyied LLM-guided DAGA generated json](https://i.ibb.co/t3dNs3d/llm-dag-gen-pretified-json.png)
 
 ## Features
-- LLM-guided DAG generation (Fig 1b)
-- Teacher-Student ready adjacency lists (Table 1)
-- MiniGrid-compliant prompt engineering
+- LLM-guided DAG generation
+- Teacher-Student ready adjacency lists
+- Farama's MiniGrid-compliant prompt engineering
 
 ## Setup
 ```
