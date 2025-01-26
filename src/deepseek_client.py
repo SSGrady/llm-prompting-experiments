@@ -1,7 +1,11 @@
 # deepseek_client.py
+from dotenv import load_dotenv
 import os
 from dataclasses import dataclass
 from openai import OpenAI
+
+# Load environment variables from .env file
+load_dotenv()
 
 @dataclass
 class APIConfig:
@@ -16,7 +20,7 @@ class APIConfig:
     base_url: str = "https://api.deepseek.com"
     api_key: str = os.getenv("DEEPSEEK_API_KEY")
     model: str = "deepseek-chat"
-    temperature: float = 0.3
+    temperature: float = 0.1
 
 class DeepseekClient:
     """ Client for interacting with Deepseek's chat API.
@@ -46,7 +50,7 @@ class DeepseekClient:
         """
         try:
             response = self.client.chat.completions.create(
-                model=self.config.model
+                model=self.config.model,
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt},
