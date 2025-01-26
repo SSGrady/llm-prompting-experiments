@@ -1,0 +1,1 @@
+{"nodes": ["At(Start)", "PickedUp(Key1)", "Unlocked(Door)", "At(Goal)", "PickedUp(Key2)"], "edges": [[1, 4], [2, 4], [3], [], [2, 1]]}
