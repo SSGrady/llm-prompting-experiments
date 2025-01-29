@@ -1,41 +1,26 @@
 # src/dag_processor.py
+import re
 import json
 import hashlib
 from pathlib import Path
+from validator import validate_dag
 
-def process_dag_response(response: str, output_dir: str = "lgts_output") -> list[list[int]]:
-    """Converts LLM response to adjacency list per paper requirements"""
-    # Processing
-    sequences = [eval(s) for s in response.strip().split('\n') if s.startswith('[')]
-    
-    # Create node mapping
-    state_map = {}
-    adj = []
-    for seq in sequences:
-        for i in range(len(seq)-1):
-            src = seq[i]
-            dst = seq[i+1]
-            
-            # Create unique node IDs
-            if src not in state_map:
-                state_map[src] = len(state_map)
-                adj.append([])
-            if dst not in state_map:
-                state_map[dst] = len(state_map)
-                adj.append([])
-            
-            # Add edge if not exists
-            if state_map[dst] not in adj[state_map[src]]:
-                adj[state_map[src]].append(state_map[dst])
+def strip_code_fences(text: str) -> str:
+    # Remove ```json or ``` and the trailing ``` common for LLMs that generate code snippets (our JSON DAG)
+    pattern = r"^```(?:json)?\s*|\s*```$"
+    return re.sub(pattern, "", text.strip())
 
-    # Save outputs with hash-based naming
+def process_dag_response(response: str, output_dir: str = "lgts_output") -> list[list[str]]:
+    # Catch empty responses from LLM
+    if not response.strip():
+        raise ValueError("Empty response received from the LLM.")
+
+    cleaned_response = strip_code_fences(response)
+    data = json.loads(cleaned_response)
+    paths = data.get("paths", [])
+    validate_dag(paths)
     Path(output_dir).mkdir(exist_ok=True)
     response_hash = hashlib.md5(response.encode()).hexdigest()[:8]
-    
-    with open(f"{output_dir}/dag_{response_hash}.json", "w") as f:
-        json.dump({
-            "nodes": list(state_map.keys()),
-            "edges": adj
-        }, f)
-    
-    return adj
+    with open(f"{output_dir}/paths_{response_hash}.json", "w") as f:
+        json.dump({"paths": paths}, f, indent=2)
+    return paths
