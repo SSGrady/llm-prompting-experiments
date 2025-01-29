@@ -30,7 +30,7 @@ class APIConfig:
     openai_api_key: str = os.getenv("OPENAI_API_KEY") 
     model: str = "deepseek-chat"
     fallback_model: str = "gpt-4o"
-    temperature: float = 0.1
+    temperature: float = 0.2
 
 class OpenAIClient:
     def __init__(self, config: APIConfig):

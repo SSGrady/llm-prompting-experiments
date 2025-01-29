@@ -1,12 +1,11 @@
-Generate a DAG unique from the example below that represents a handful of paths from the Start State to the Goal State. A state is defined by a conjunction of ground predicates using the following list:
+Generate a handul of unique DAGs showing multiple paths from the start to the goal. A “state” is any conjunction of these ground predicates:
 
-Start State: OutsideRoom, Goal State: Green_Goal
+Start: OutsideRoom
+Goal: Green_Goal
 Objects: Key1, Key2, Key3, Door, Lava, Wall
 Predicates: At(?), Holding(?), Unlocked(?)
-
-Each path should include intermediate states logically required to progress from the start to the goal. Paths should follow the constraints of the environment and valid object interactions.
-
-Output the DAG in JSON format as a 2-D array of possible paths. Do not include any additional information. Example:
+Include intermediate states logically required to move from start to goal, respecting object interactions and valid environment constraints. 
+Output the DAGs in JSON as members of a 2D array named "paths", with no extra text. For example:
 {"paths": [[
       "At(OutsideRoom)",
       "Holding(Key1)",
