@@ -2,12 +2,12 @@
 
 UCF Team L15's living LLM implementation for "Dynamic Task Sampling using LLM-generated sub-goals"
 
-![Img of prettyied LLM-guided DAGA generated json](https://i.ibb.co/t3dNs3d/llm-dag-gen-pretified-json.png)
+![Img of LLM-guided DAG json](https://i.ibb.co/xSrmjZDY/mini-llm-guided-2d-dag.png)
 
 ## Features
 - LLM-guided DAG generation
-- Teacher-Student ready adjacency lists
-- Farama's MiniGrid-compliant prompt engineering
+- Teacher-Student-ready 2D list
+- MiniGrid-compliant prompt engineering
 
 ## 1. Clone with SSH
 ```
@@ -18,10 +18,18 @@ cd llm-prompting-experiments
 ## 2. Setup
 ```
 pip install -r requirements.txt
-echo "DEEPSEEK_API_KEY=your_key" > .env
 ```
 
-## 3. Running
+## 3. Choose
+```
+echo "DEEPSEEK_API_KEY=your_key" > .env
+```
+OR
+```
+echo "OPENAI_API_KEY=your_key" > .env
+```
+
+## 4. Running
 ```
 python3 src/main.py
 ```
