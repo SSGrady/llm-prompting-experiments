@@ -1,1 +1,0 @@
-{"nodes": ["At(Start)", "PickedUp(EasyKey)", "Unlocked(Door)", "At(Goal)", "PickedUp(HardKey)"], "edges": [[1, 4], [2, 4], [3], [], [2, 1]]}
