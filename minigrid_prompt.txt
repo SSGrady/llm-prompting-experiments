@@ -1,17 +1,29 @@
-Generate exactly 4 distinct state sequences navigating from Start to Goal in a MiniGrid world. Follow these rules:
+Generate a DAG unique from the example below that represents a handful of paths from the Start State to the Goal State. A state is defined by a conjunction of ground predicates using the following list:
 
-1. Each sequence must:
-   - Begin with ['At(Start)']
-   - End with ['At(Goal)']
-   - Use only these predicates: At(?), PickedUp(?), Unlocked(?)
-   - Use only these objects: EasyKey, HardKey, Door, Lava, Wall
+Start State: OutsideRoom, Goal State: Green_Goal
+Objects: Key1, Key2, Key3, Door, Lava, Wall
+Predicates: At(?), Holding(?), Unlocked(?)
 
-2. Valid transitions must show:
-   - Key collection before door unlocking
-   - Avoid lava/wall states
-   - Logical progression (e.g., cannot unlock door without key)
+Each path should include intermediate states logically required to progress from the start to the goal. Paths should follow the constraints of the environment and valid object interactions.
 
-3. Format each sequence as a Python list with EXACTLY this structure:
-['At(Start)', 'PickedUp(EasyKey)', 'Unlocked(Door)', ..., 'At(Goal)']
-
-Output ONLY the 4 Python lists separated by newlines. No explanations.
+Output the DAG in JSON format as a 2-D array of possible paths. Do not include any additional information. Example:
+{"paths": [[
+      "At(OutsideRoom)",
+      "Holding(Key1)",
+      "Unlocked(Door)",
+      "At(Green_Goal)"
+    ],[
+      "At(OutsideRoom)",
+      "Holding(Key2)",
+      "Unlocked(Door)",
+      "At(Green_Goal)"
+    ],[
+      "At(OutsideRoom)",
+      "Holding(Key3)",
+      "Unlocked(Door)",
+      "At(Green_Goal)"
+    ],[
+      "At(OutsideRoom)",
+      "At(Wall)",
+      "At(Green_Goal)"
+    ]]}
