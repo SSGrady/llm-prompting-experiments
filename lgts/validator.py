@@ -1,4 +1,4 @@
-# src/validator.py
+# lgts/validator.py
 import re
 from typing import List
 

@@ -1,4 +1,4 @@
-# choose_model_client.py
+# lgts/choose_model_client.py
 
 from dotenv import load_dotenv
 import os

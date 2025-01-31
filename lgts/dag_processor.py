@@ -1,12 +1,12 @@
-# src/dag_processor.py
+# lgts/dag_processor.py
 import re
 import json
 import hashlib
 from pathlib import Path
-from validator import validate_dag
+from lgts.validator import validate_dag
 
 def strip_code_fences(text: str) -> str:
-    # Remove ```json or ``` and the trailing ``` common for LLMs that generate code snippets (our JSON DAG)
+    # Remove trailing ``` common for our JSON LLM-guided DAG list
     pattern = r"^```(?:json)?\s*|\s*```$"
     return re.sub(pattern, "", text.strip())
 

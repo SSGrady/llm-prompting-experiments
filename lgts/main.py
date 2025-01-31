@@ -1,9 +1,8 @@
-# src/main.py
-import os
+# lgts/main.py
 from pathlib import Path
-from choose_model_client import APIConfig, OpenAIClient
-from dag_processor import process_dag_response
-from validator import DAGValidationError
+from lgts.choose_model_client import APIConfig, OpenAIClient
+from lgts.dag_processor import process_dag_response
+from lgts.validator import DAGValidationError
 import time
 import json
 
