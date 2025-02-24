@@ -1,5 +1,6 @@
 # environment
 env/
+.env
 
 # Byte-compiled files
 __pycache__
